@@ -5,17 +5,33 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "npm run prod",
+    "dev": "npm-run-all build server",
+    "prod": " npm-run-all build server",
+    "server": "node ./dist-server/bin/www",
+    "build": "npm-run-all clean transpile",
+    "transpile": "babel ./src --out-dir dist-server",
+    "clean": "rimraf dist-server",
+    "watch:dev": "nodemon",
+    "test": "npm run build jtest",
+    "jtest": "jest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.1",
+    "morgan": "^1.10.0",
+    "npm-run-all": "^4.1.5",
     "swagger-ui-express": "^4.4.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.16"
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "gulp-imagemin": "^2.4.0",
+    "nodemon": "^2.0.16",
+    "rimraf": "^3.0.2"
   }
 }
