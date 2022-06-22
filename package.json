@@ -12,9 +12,7 @@
     "build": "npm-run-all clean transpile",
     "transpile": "babel ./src --out-dir dist-server",
     "clean": "rimraf dist-server",
-    "watch:dev": "nodemon",
-    "test": "npm run build jtest",
-    "jtest": "jest"
+    "watch:dev": "nodemon"
   },
   "keywords": [],
   "author": "",
