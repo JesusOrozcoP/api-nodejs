@@ -1,8 +1,15 @@
 import express from 'express';
 import swaggerUi from 'swagger-ui-express';
-//import bodyParser from 'body-parser';
 import userRoutes from './routes/users.js';
-//import swaggerDocument from './swagger.json';// assert {type: "json"};
+import swaggerDocument from '../src/swagger.json' assert {type: 'json'};
+
+//const swaggerDocument = require('swagger.json');
+
+//  const swaggerDocument = import('./swagger.json', {
+//      assert:  {
+//        type: 'json'
+//      }
+//    });
 
 
 // Parsers
@@ -29,18 +36,18 @@ app.use(function(req, res, next) {
 
 
 //const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 app.use(bodyParser.json());
 app.use('/users', userRoutes);
 
 app.get('/', (req,res) => res.send('Hello world from home page!!! ... :)'));
 
-// app.use(
-//     '/definition',
-//     swaggerUi.serve, 
-//     swaggerUi.setup(swaggerDocument)
-// );
+ app.use(
+     '/definition',
+     swaggerUi.serve, 
+     swaggerUi.setup(swaggerDocument)
+ );
 app.listen(PORT,() => console.log(`Server non still running on port: http://localhost:${PORT}`));
 
 export default app;

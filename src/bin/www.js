@@ -3,7 +3,7 @@ import debugLib from 'debug';
 import http from 'http';
 const debug = debugLib('your-project-name:server');
 
-var port = normalizePort(process.env.PORT || '8000');
+var port = normalizePort(process.env.PORT || '3000');
 app.set('port', port);
 
 /**
@@ -19,7 +19,6 @@ var server = http.createServer(app);
  server.listen(port);
  server.on('error', onError);
  server.on('listening', onListening);
-
  
 /**
  * Normalize a port into a number, string, or false.
@@ -41,16 +40,16 @@ function normalizePort(val) {
     return false;
   }
   
+
   /**
    * Event listener for HTTP server "error" event.
    */
-  
-  function onError(error) {
+    function onError(error) {
     if (error.syscall !== 'listen') {
       throw error;
     }
-  
-    var bind = typeof port === 'string'
+
+      var bind = typeof port === 'string'
       ? 'Pipe ' + port
       : 'Port ' + port;
   
@@ -68,16 +67,15 @@ function normalizePort(val) {
         throw error;
     }
   }
+
   
   /**
    * Event listener for HTTP server "listening" event.
    */
-  
-  function onListening() {
+    function onListening() {
     var addr = server.address();
     var bind = typeof addr === 'string'
       ? 'pipe ' + addr
       : 'port ' + addr.port;
     debug('Listening on ' + bind);
-  }
-  
+  } 
